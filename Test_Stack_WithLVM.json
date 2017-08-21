@@ -23,28 +23,7 @@
                     "Fn::Base64" : {
                         "Fn::Join" : ["",
                             [
-							"#!/bin/bash\n",
-							"touch /var/tmp/Complete_BootStrap_Logs.txt\n",
-							"LOGFile='/var/tmp/Complete_BootStrap_Logs.txt';export LOGFile\n",
-                            "pvcreate -y /dev/xvdf /dev/xvdg\n",
-							"pvcreate -y /dev/xvdf /dev/xvdg | awk '{print $3}' | tr -d '\"' | while read vol1 vol2; do vgcreate vol_grp1 /dev/sdf /dev/sdg; done\n",
-							"if test $? -eq 0; then echo 'Volume Group 'vol_grp1' successfully created'>>$LOGFile;fi\n",
-							"lvcreate -L 5G -n logical_vol1 vol_grp1; mke2fs -F -t ext4 /dev/vol_grp1/logical_vol1\n",
-							"lvcreate -L 5G -n logical_vol2 vol_grp1; mke2fs -F -t ext4 /dev/vol_grp1/logical_vol2\n",
-							"lvcreate -L 5G -n logical_vol3 vol_grp1; mke2fs -F -t ext4 /dev/vol_grp1/logical_vol3\n",
-							"lvcreate -L 5G -n logical_vol4 vol_grp1; mke2fs -F -t ext4 /dev/vol_grp1/logical_vol4\n",
-							"echo \"4 FileSystem(s) Successfully Created\" >>$LOGFile\n",
-							"mkdir /one /two /three /four >>$LOGFile\n",
-							"mount /dev/vol_grp1/logical_vol1 /one\n",
-							"mount /dev/vol_grp1/logical_vol2 /two\n",
-							"mount /dev/vol_grp1/logical_vol3 /three\n",
-							"mount /dev/vol_grp1/logical_vol4 /four\n",
-							"echo \"/dev/mapper/vol_grp1-logical_vol1 /one ext4 defaults,nofail 0 2\" >> /etc/fstab\n",
-							"echo \"/dev/mapper/vol_grp1-logical_vol2 /two ext4 defaults,nofail 0 2\" >> /etc/fstab\n",
-							"echo \"/dev/mapper/vol_grp1-logical_vol3 /three ext4 defaults,nofail 0 2\" >> /etc/fstab\n",
-							"echo \"/dev/mapper/vol_grp1-logical_vol4 /four ext4 defaults,nofail 0 2\" >> /etc/fstab\n",
-							"echo \"All the FileSystems are Mounted and modified the '/etc/fstab' file\" >>$LOGFile\n",
-							"echo 'End of the CloudFormation Template>>$LOGFile"
+							
                             ]
                         ]
                     }
